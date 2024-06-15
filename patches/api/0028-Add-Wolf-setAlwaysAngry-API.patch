@@ -5,13 +5,15 @@ Subject: [PATCH] Add Wolf setAlwaysAngry API
 
 
 diff --git a/src/main/java/org/bukkit/entity/Wolf.java b/src/main/java/org/bukkit/entity/Wolf.java
-index 84db38388bf7a58e66d6cd29620b4fe64b0a897e..4fb97ae6050fbfed255fe98065bf97d597b990c1 100644
+index 4b84c04675775e2a606630b00de8afe51665cebc..091498cee825588f29f6f114dde8e2972fd71ffc 100644
 --- a/src/main/java/org/bukkit/entity/Wolf.java
 +++ b/src/main/java/org/bukkit/entity/Wolf.java
-@@ -69,4 +69,6 @@ public interface Wolf extends Tameable, Sittable, io.papermc.paper.entity.Collar
-      * @param interested Whether the wolf is interested
+@@ -74,6 +74,8 @@ public interface Wolf extends Tameable, Sittable, io.papermc.paper.entity.Collar
       */
      public void setInterested(boolean interested);
-+
+ 
 +    void setAlwaysAngry(boolean alwaysAngry); // EMC
- }
++
+     /**
+      * Get the variant of this wolf.
+      *

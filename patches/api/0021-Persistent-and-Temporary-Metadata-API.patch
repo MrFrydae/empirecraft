@@ -1637,7 +1637,7 @@ index 0000000000000000000000000000000000000000..3695dfc172c2802caf6d98a7007c64a7
 +    }
 +}
 diff --git a/src/main/java/org/bukkit/Chunk.java b/src/main/java/org/bukkit/Chunk.java
-index d547ae2b20c58bc703de4532b3b591dd34ddb1c6..8db65d3d185f1aacf3f7261b400c32ed18550e3b 100644
+index bc8b5bc17706250b8535b1b309134843d2ce2bb1..2f853be725284eb9f94c4f938b9a72363898af68 100644
 --- a/src/main/java/org/bukkit/Chunk.java
 +++ b/src/main/java/org/bukkit/Chunk.java
 @@ -1,6 +1,9 @@
@@ -1650,7 +1650,7 @@ index d547ae2b20c58bc703de4532b3b591dd34ddb1c6..8db65d3d185f1aacf3f7261b400c32ed
  import org.bukkit.block.Biome;
  import org.bukkit.block.Block;
  import org.bukkit.block.BlockState;
-@@ -20,6 +23,12 @@ import org.jetbrains.annotations.NotNull;
+@@ -21,6 +24,12 @@ import org.jetbrains.annotations.NotNull;
   * requested data.
   */
  public interface Chunk extends PersistentDataHolder {
@@ -1664,7 +1664,7 @@ index d547ae2b20c58bc703de4532b3b591dd34ddb1c6..8db65d3d185f1aacf3f7261b400c32ed
      /**
       * Gets the X-coordinate of this chunk
 diff --git a/src/main/java/org/bukkit/World.java b/src/main/java/org/bukkit/World.java
-index c5fe36050eeaff80cfb989fe2f38370215af6fe5..e0d4370a3e8c516c3ab64ebb790ba1833b1d29dd 100644
+index fdb87adfb8d6eff2bfabe7a41398c53d15d4cd98..3adbaf83165f355c1ab94ee7b92700c6065c2f09 100644
 --- a/src/main/java/org/bukkit/World.java
 +++ b/src/main/java/org/bukkit/World.java
 @@ -1,6 +1,8 @@
@@ -1690,10 +1690,10 @@ index c5fe36050eeaff80cfb989fe2f38370215af6fe5..e0d4370a3e8c516c3ab64ebb790ba183
      /**
       * Gets the {@link Block} at the given coordinates
 diff --git a/src/main/java/org/bukkit/block/BlockState.java b/src/main/java/org/bukkit/block/BlockState.java
-index ef35316fa66ac8d9c7836b9c8af56dcefbf6ff2e..64a59e94dc2c2f14e2dd6188c946c1d803a62a20 100644
+index 80e5d39afe8a6cf882b29c0da78450b958812137..c3448d0eb9c8c2caddb0f3c89364c5091425a48d 100644
 --- a/src/main/java/org/bukkit/block/BlockState.java
 +++ b/src/main/java/org/bukkit/block/BlockState.java
-@@ -235,7 +235,7 @@ public interface BlockState extends Metadatable {
+@@ -245,7 +245,7 @@ public interface BlockState extends Metadatable {
       *         or 'virtual' (e.g. on an itemstack)
       */
      boolean isPlaced();
@@ -1703,7 +1703,7 @@ index ef35316fa66ac8d9c7836b9c8af56dcefbf6ff2e..64a59e94dc2c2f14e2dd6188c946c1d8
      /**
       * Checks if this block state is collidable.
 diff --git a/src/main/java/org/bukkit/entity/Entity.java b/src/main/java/org/bukkit/entity/Entity.java
-index d9929d9311e4b2b0ae13a8f6f13563257263f298..1244a7b21b34e45b1397e96a5fdce453e1737d6f 100644
+index 725ef320f929d5e3d141c1ed3246d73a7d741f31..3cd329bb2afa9a466d0113691d613480e18c8e69 100644
 --- a/src/main/java/org/bukkit/entity/Entity.java
 +++ b/src/main/java/org/bukkit/entity/Entity.java
 @@ -3,6 +3,9 @@ package org.bukkit.entity;
