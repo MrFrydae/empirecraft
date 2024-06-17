@@ -7,18 +7,18 @@ Specifically nullable player and extracted item
 Added result item type and amount
 
 diff --git a/src/main/java/org/bukkit/event/inventory/FurnaceExtractEvent.java b/src/main/java/org/bukkit/event/inventory/FurnaceExtractEvent.java
-index 5ffd28fd24b4477a07fc9f6a3f669a6f4da9fa26..f85364dee0f4c4b7231e413c53739e490a2d52cd 100644
+index a965b6a78073c5da86ad671752eff4a270029420..eedde6d69790f2d81a0f74460d98552fcfc9e8f4 100644
 --- a/src/main/java/org/bukkit/event/inventory/FurnaceExtractEvent.java
 +++ b/src/main/java/org/bukkit/event/inventory/FurnaceExtractEvent.java
-@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
+@@ -5,6 +5,7 @@ import org.bukkit.block.Block;
+ import org.bukkit.entity.Player;
  import org.bukkit.event.block.BlockExpEvent;
- import org.bukkit.material.MaterialData;
  import org.jetbrains.annotations.NotNull;
 +import org.jetbrains.annotations.Nullable;
  
  /**
   * This event is called when a player takes items out of a furnace-like block such as a
-@@ -18,8 +19,14 @@ public class FurnaceExtractEvent extends BlockExpEvent {
+@@ -16,8 +17,14 @@ public class FurnaceExtractEvent extends BlockExpEvent {
      private final Material itemType;
      private final int itemAmount;
  
@@ -32,27 +32,27 @@ index 5ffd28fd24b4477a07fc9f6a3f669a6f4da9fa26..f85364dee0f4c4b7231e413c53739e49
 +        this.resultAmount = resultAmount;
 +        // EMC end
          this.player = player;
-         if (itemType != null && itemType.isLegacy()) {
-             itemType = Bukkit.getUnsafe().fromLegacy(new MaterialData(itemType), true);
-@@ -33,7 +40,7 @@ public class FurnaceExtractEvent extends BlockExpEvent {
+         this.itemType = itemType;
+         this.itemAmount = itemAmount;
+@@ -28,7 +35,7 @@ public class FurnaceExtractEvent extends BlockExpEvent {
       *
       * @return the relevant player
       */
 -    @NotNull
-+    @Nullable
++    @Nullable // EMC
      public Player getPlayer() {
          return player;
      }
-@@ -43,7 +50,7 @@ public class FurnaceExtractEvent extends BlockExpEvent {
+@@ -38,7 +45,7 @@ public class FurnaceExtractEvent extends BlockExpEvent {
       *
       * @return the material of the item
       */
 -    @NotNull
-+    @Nullable
++    @Nullable // EMC
      public Material getItemType() {
          return itemType;
      }
-@@ -56,4 +63,27 @@ public class FurnaceExtractEvent extends BlockExpEvent {
+@@ -51,4 +58,27 @@ public class FurnaceExtractEvent extends BlockExpEvent {
      public int getItemAmount() {
          return itemAmount;
      }

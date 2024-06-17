@@ -11,7 +11,7 @@ For example, lore can be used to identify a custom item, but then if a player re
 This new boolean allows you to verify if the item is the same ignoring the name field by temporarily nulling it during the check.
 
 diff --git a/src/main/java/org/bukkit/inventory/ItemStack.java b/src/main/java/org/bukkit/inventory/ItemStack.java
-index e02deb29cc3d76727f893afab190efe625d6da6e..f99aea804c3becfacef9d0abaf0b39b5845fe18e 100644
+index 667de21f12268044e87e686cee4a7e3d88f78168..5ae3b32805ec107c80ba27d2c9dc851e09cdfed5 100644
 --- a/src/main/java/org/bukkit/inventory/ItemStack.java
 +++ b/src/main/java/org/bukkit/inventory/ItemStack.java
 @@ -17,6 +17,7 @@ import org.bukkit.enchantments.Enchantment;
@@ -22,7 +22,7 @@ index e02deb29cc3d76727f893afab190efe625d6da6e..f99aea804c3becfacef9d0abaf0b39b5
  import org.jetbrains.annotations.NotNull;
  import org.jetbrains.annotations.Nullable;
  
-@@ -326,8 +327,41 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
+@@ -319,8 +320,41 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
       * @param stack the item stack to compare to
       * @return true if the two stacks are equal, ignoring the amount
       */
@@ -64,7 +64,7 @@ index e02deb29cc3d76727f893afab190efe625d6da6e..f99aea804c3becfacef9d0abaf0b39b5
          if (stack == null) {
              return false;
          }
-@@ -335,7 +369,43 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
+@@ -328,7 +362,43 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
              return true;
          }
          Material comparisonType = (this.getType().isLegacy()) ? Bukkit.getUnsafe().fromLegacy(this.getData(), true) : this.getType(); // This may be called from legacy item stacks, try to get the right material // Paper - use getType() instead of type field

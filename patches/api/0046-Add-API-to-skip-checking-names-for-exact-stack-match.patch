@@ -5,7 +5,7 @@ Subject: [PATCH] Add API to skip checking names for exact stack matches
 
 
 diff --git a/src/main/java/org/bukkit/inventory/RecipeChoice.java b/src/main/java/org/bukkit/inventory/RecipeChoice.java
-index e7796054f3f65f5bea7f93c75320195f6c2f0561..a4fc1ccc16bcd37e124f09fbbf7db9ecac59eb04 100644
+index c143b0d8b97d514566bac8413d0346cf50822aeb..f8fbf120eef5f85e0961150b978db6e2927475fb 100644
 --- a/src/main/java/org/bukkit/inventory/RecipeChoice.java
 +++ b/src/main/java/org/bukkit/inventory/RecipeChoice.java
 @@ -7,6 +7,8 @@ import java.util.Collections;
@@ -14,10 +14,10 @@ index e7796054f3f65f5bea7f93c75320195f6c2f0561..a4fc1ccc16bcd37e124f09fbbf7db9ec
  import java.util.function.Predicate;
 +import java.util.stream.Collectors;
 +
- import org.bukkit.Bukkit;
  import org.bukkit.Material;
  import org.bukkit.Tag;
-@@ -200,7 +202,17 @@ public interface RecipeChoice extends Predicate<ItemStack>, Cloneable {
+ import org.jetbrains.annotations.NotNull;
+@@ -166,14 +168,24 @@ public interface RecipeChoice extends Predicate<ItemStack>, Cloneable {
              this(Arrays.asList(stacks));
          }
  
@@ -35,8 +35,7 @@ index e7796054f3f65f5bea7f93c75320195f6c2f0561..a4fc1ccc16bcd37e124f09fbbf7db9ec
              Preconditions.checkArgument(choices != null, "choices");
              Preconditions.checkArgument(!choices.isEmpty(), "Must have at least one choice");
              for (ItemStack choice : choices) {
-@@ -208,7 +220,7 @@ public interface RecipeChoice extends Predicate<ItemStack>, Cloneable {
-                 Preconditions.checkArgument(!choice.getType().isAir(), "Cannot have empty/air choice");
+                 Preconditions.checkArgument(choice != null, "Cannot have null choice");
              }
  
 -            this.choices = new ArrayList<>(choices);
@@ -44,7 +43,7 @@ index e7796054f3f65f5bea7f93c75320195f6c2f0561..a4fc1ccc16bcd37e124f09fbbf7db9ec
          }
  
          @NotNull
-@@ -242,7 +254,7 @@ public interface RecipeChoice extends Predicate<ItemStack>, Cloneable {
+@@ -207,7 +219,7 @@ public interface RecipeChoice extends Predicate<ItemStack>, Cloneable {
          @Override
          public boolean test(@NotNull ItemStack t) {
              for (ItemStack match : choices) {
@@ -54,7 +53,7 @@ index e7796054f3f65f5bea7f93c75320195f6c2f0561..a4fc1ccc16bcd37e124f09fbbf7db9ec
                  }
              }
 diff --git a/src/main/java/org/bukkit/inventory/ShapedRecipe.java b/src/main/java/org/bukkit/inventory/ShapedRecipe.java
-index 28e8d4e4f354b304f32cd8f14dcff7166a7bb37e..9458139cfde8b320bf86ee8f030d05983513a153 100644
+index 0547505987ee954adbac0cbe5a6ada3dfaedf034..62f3e4611eeee0bbcb324707cac58a56ba682a3f 100644
 --- a/src/main/java/org/bukkit/inventory/ShapedRecipe.java
 +++ b/src/main/java/org/bukkit/inventory/ShapedRecipe.java
 @@ -176,6 +176,10 @@ public class ShapedRecipe extends CraftingRecipe {
@@ -63,16 +62,16 @@ index 28e8d4e4f354b304f32cd8f14dcff7166a7bb37e..9458139cfde8b320bf86ee8f030d0598
      }
 +    @NotNull
 +    public ShapedRecipe setIngredient(char key, @NotNull ItemStack item, boolean skipCheckingName) {
-+        return setIngredient(key, new RecipeChoice.ExactChoice(item.clone(), skipCheckingName));
++        return setIngredient(key, new RecipeChoice.ExactChoice(item, skipCheckingName));
 +    }
      // Paper end
  
      /**
 diff --git a/src/main/java/org/bukkit/inventory/ShapelessRecipe.java b/src/main/java/org/bukkit/inventory/ShapelessRecipe.java
-index 8251170314ab25c26270208e453b4e3909435754..08710cb4498fb6874abaa83614cc038b508a6d4d 100644
+index 6a8195ca224790e3130ec9923188e7b585797263..3e0b4e32420cf12dd7e2a77e8f22330278621057 100644
 --- a/src/main/java/org/bukkit/inventory/ShapelessRecipe.java
 +++ b/src/main/java/org/bukkit/inventory/ShapelessRecipe.java
-@@ -138,16 +138,26 @@ public class ShapelessRecipe extends CraftingRecipe {
+@@ -138,16 +138,25 @@ public class ShapelessRecipe extends CraftingRecipe {
      // Paper start
      @NotNull
      public ShapelessRecipe addIngredient(@NotNull ItemStack item) {
@@ -89,7 +88,6 @@ index 8251170314ab25c26270208e453b4e3909435754..08710cb4498fb6874abaa83614cc038b
      public ShapelessRecipe addIngredient(int count, @NotNull ItemStack item) {
 +        return addIngredient(count, item, false);
 +    }
-+
 +    @NotNull
 +    public ShapelessRecipe addIngredient(int count, @NotNull ItemStack item, boolean skipCheckingName) {
          Preconditions.checkArgument(ingredients.size() + count <= 9, "Shapeless recipes cannot have more than 9 ingredients");
@@ -97,7 +95,7 @@ index 8251170314ab25c26270208e453b4e3909435754..08710cb4498fb6874abaa83614cc038b
          item = item.clone(); // Paper
          while (count-- > 0) {
 -            ingredients.add(new RecipeChoice.ExactChoice(item));
-+            ingredients.add(new RecipeChoice.ExactChoice(item.clone(), skipCheckingName));
++            ingredients.add(new RecipeChoice.ExactChoice(item, skipCheckingName));
          }
          return this;
      }

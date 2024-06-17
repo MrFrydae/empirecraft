@@ -5,10 +5,10 @@ Subject: [PATCH] Ignore completion starting with _
 
 
 diff --git a/src/main/java/org/bukkit/command/SimpleCommandMap.java b/src/main/java/org/bukkit/command/SimpleCommandMap.java
-index 5df19bd701c67506689fc7f49d91f99ebfbc83f0..ba43107777c9558e083d88f7da0a1e0b90d6cc07 100644
+index c3a9cf65db73ed534bf20996c7f05b5eb0aaebe1..8a0c58e6f405d520087dc341e595e5c781690365 100644
 --- a/src/main/java/org/bukkit/command/SimpleCommandMap.java
 +++ b/src/main/java/org/bukkit/command/SimpleCommandMap.java
-@@ -224,7 +224,7 @@ public class SimpleCommandMap implements CommandMap {
+@@ -223,7 +223,7 @@ public class SimpleCommandMap implements CommandMap {
  
                  String name = commandEntry.getKey(); // Use the alias, not command name
  

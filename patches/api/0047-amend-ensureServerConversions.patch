@@ -6,10 +6,10 @@ Subject: [PATCH] amend ensureServerConversions
 pending paper merge, store data version on stacks
 
 diff --git a/src/main/java/org/bukkit/inventory/ItemFactory.java b/src/main/java/org/bukkit/inventory/ItemFactory.java
-index bd0e55562f1cabef3078573182e0cf9fbc844585..818da1eaaee094f9952ff8a8adba22d450e71c8c 100644
+index e20f64828548c647a29dad5a475f4596cad88cd8..b22d518efd27544921e0f807d914a037d8b24f12 100644
 --- a/src/main/java/org/bukkit/inventory/ItemFactory.java
 +++ b/src/main/java/org/bukkit/inventory/ItemFactory.java
-@@ -246,6 +246,17 @@ public interface ItemFactory {
+@@ -261,6 +261,17 @@ public interface ItemFactory {
      String getI18NDisplayName(@Nullable ItemStack item);
      // Paper end - add getI18NDisplayName
  
@@ -28,7 +28,7 @@ index bd0e55562f1cabef3078573182e0cf9fbc844585..818da1eaaee094f9952ff8a8adba22d4
      /**
       * Minecraft's updates are converting simple item stacks into more complex NBT oriented Item Stacks.
 diff --git a/src/main/java/org/bukkit/inventory/ItemStack.java b/src/main/java/org/bukkit/inventory/ItemStack.java
-index f99aea804c3becfacef9d0abaf0b39b5845fe18e..0439c8f0be2f2a75340e69ddd146db67550ab3f9 100644
+index 5ae3b32805ec107c80ba27d2c9dc851e09cdfed5..389a27e06b914ff2b46c4b6e3e7f0250a83d7100 100644
 --- a/src/main/java/org/bukkit/inventory/ItemStack.java
 +++ b/src/main/java/org/bukkit/inventory/ItemStack.java
 @@ -33,6 +33,31 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
@@ -63,7 +63,7 @@ index f99aea804c3becfacef9d0abaf0b39b5845fe18e..0439c8f0be2f2a75340e69ddd146db67
  
      @Utility
      protected ItemStack() {}
-@@ -583,7 +608,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
+@@ -576,7 +601,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
      public Map<String, Object> serialize() {
          Map<String, Object> result = new LinkedHashMap<String, Object>();
  
@@ -72,7 +72,7 @@ index f99aea804c3becfacef9d0abaf0b39b5845fe18e..0439c8f0be2f2a75340e69ddd146db67
          result.put("type", getType().name());
  
          if (getAmount() != 1) {
-@@ -635,6 +660,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
+@@ -628,6 +653,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
          }
  
          ItemStack result = new ItemStack(type, amount, damage);
@@ -80,7 +80,7 @@ index f99aea804c3becfacef9d0abaf0b39b5845fe18e..0439c8f0be2f2a75340e69ddd146db67
  
          if (args.containsKey("enchantments")) { // Backward compatiblity, @deprecated
              Object raw = args.get("enchantments");
-@@ -821,8 +847,9 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
+@@ -819,8 +845,9 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
       *
       * Use this method to ensure any desired data conversions are processed.
       * The input itemstack will not be the same as the returned itemstack.
