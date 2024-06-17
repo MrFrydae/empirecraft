@@ -2674,7 +2674,7 @@ index 2bc69e84b4e2ba8f816322d649e42570ab9242e5..4127c331fffb85af0fd3ff695bb78be1
      }
  }
 diff --git a/src/main/java/net/minecraft/util/datafix/DataFixers.java b/src/main/java/net/minecraft/util/datafix/DataFixers.java
-index f833cea4d50ba31b1b9978f7e1b52bb3f14c4afd..3da445472bf9d2e38594bda7f607c4a3e49e2fca 100644
+index fbf236adaee622887e4d34c74095e2b6154e28d0..d588865aeb98bd310220115b751955977319ebc2 100644
 --- a/src/main/java/net/minecraft/util/datafix/DataFixers.java
 +++ b/src/main/java/net/minecraft/util/datafix/DataFixers.java
 @@ -1,5 +1,6 @@
@@ -2684,7 +2684,7 @@ index f833cea4d50ba31b1b9978f7e1b52bb3f14c4afd..3da445472bf9d2e38594bda7f607c4a3
  import com.google.common.collect.ImmutableMap;
  import com.google.common.util.concurrent.ThreadFactoryBuilder;
  import com.mojang.datafixers.DSL;
-@@ -114,10 +115,10 @@ public class DataFixers {
+@@ -125,10 +126,10 @@ public class DataFixers {
      }
  
      private static synchronized DataFixer createFixerUpper(Set<TypeReference> requiredTypes) {

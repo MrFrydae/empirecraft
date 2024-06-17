@@ -5,10 +5,10 @@ Subject: [PATCH] SpawnerInitiateEvent
 
 
 diff --git a/src/main/java/net/minecraft/world/level/BaseSpawner.java b/src/main/java/net/minecraft/world/level/BaseSpawner.java
-index 65c3e91ac4541c0150057dc9f012eb1ee566516e..45d736a61a3347eaaa6db90dae25a9c351f8f02d 100644
+index f57e1b78204dff661ad5d3ee93a88a00330af2dc..7c74f60944c34f190c1d494c24d76f8f9a29e0dd 100644
 --- a/src/main/java/net/minecraft/world/level/BaseSpawner.java
 +++ b/src/main/java/net/minecraft/world/level/BaseSpawner.java
-@@ -57,6 +57,25 @@ public abstract class BaseSpawner {
+@@ -59,6 +59,25 @@ public abstract class BaseSpawner {
      }
  
      public boolean isNearPlayer(Level world, BlockPos pos) {

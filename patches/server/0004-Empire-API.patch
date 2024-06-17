@@ -113,10 +113,10 @@ index 0000000000000000000000000000000000000000..7b295bc869fd8fac878fd25fdcd3f034
 +
 +}
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index f2211932cc47218aaa291349b2ede923ebdaebbb..e56a03decc1c32841a430a28b9cf3e049db0d40d 100644
+index 02a9aa7982e5c8ccb2c3f875cfe5e9c1238bfd9e..99427b9519f5ead793c2159e997656108ce5c4ee 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -379,6 +379,7 @@ public final class CraftServer implements Server {
+@@ -382,6 +382,7 @@ public final class CraftServer implements Server {
      // Paper end - Folia reagion threading API
  
      static {
