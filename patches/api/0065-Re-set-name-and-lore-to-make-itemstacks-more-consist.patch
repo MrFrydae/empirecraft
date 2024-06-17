@@ -6,10 +6,10 @@ Subject: [PATCH] Re-set name and lore to make itemstacks more consistent
 
 
 diff --git a/src/main/java/org/bukkit/inventory/ItemStack.java b/src/main/java/org/bukkit/inventory/ItemStack.java
-index 77099e6152ce99897b41594f0a1d44460f7721e5..be5a6d632731f16d588db5dff082d892a416a6d3 100644
+index afec8a34077f8a9aa7faf51060a65fc7b4abb902..e9ea3f0b718f389dab9b7c30cc1bccee797e487b 100644
 --- a/src/main/java/org/bukkit/inventory/ItemStack.java
 +++ b/src/main/java/org/bukkit/inventory/ItemStack.java
-@@ -700,6 +700,16 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
+@@ -701,6 +701,16 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
          if (version <= 1343) {
              convertHorse(result);
          }

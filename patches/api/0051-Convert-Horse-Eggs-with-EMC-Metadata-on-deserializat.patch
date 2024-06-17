@@ -8,10 +8,18 @@ horse eggs so that they have the appropriate icon color without
 spawning and re-eggifying it.
 
 diff --git a/src/main/java/org/bukkit/inventory/ItemStack.java b/src/main/java/org/bukkit/inventory/ItemStack.java
-index 389a27e06b914ff2b46c4b6e3e7f0250a83d7100..77099e6152ce99897b41594f0a1d44460f7721e5 100644
+index 389a27e06b914ff2b46c4b6e3e7f0250a83d7100..afec8a34077f8a9aa7faf51060a65fc7b4abb902 100644
 --- a/src/main/java/org/bukkit/inventory/ItemStack.java
 +++ b/src/main/java/org/bukkit/inventory/ItemStack.java
-@@ -695,8 +695,51 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
+@@ -3,6 +3,7 @@ package org.bukkit.inventory;
+ import com.google.common.base.Preconditions;
+ import com.google.common.collect.ImmutableMap;
+ import java.util.LinkedHashMap;
++import java.util.List;
+ import java.util.Locale;
+ import java.util.Map;
+ import org.bukkit.Bukkit;
+@@ -695,8 +696,51 @@ public class ItemStack implements Cloneable, ConfigurationSerializable, Translat
              }
          }
  
